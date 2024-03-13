@@ -1,11 +1,11 @@
 import { SelectOutlined } from '@ant-design/icons'
 import { Button, Typography } from 'antd'
 import { useState } from 'react'
-import { Helmet } from 'react-helmet'
+import { Helmet, HelmetProvider } from 'react-helmet-async'
 import { useMediaQuery } from 'react-responsive'
 import SignIn from './SignIn'
 import SignUp from './SignUp'
-import './style.less'
+import './index.scss'
 
 const { Link } = Typography
 
@@ -28,10 +28,12 @@ export default function Auth() {
 
   return (
     <div className='auth-page'>
-      <Helmet>
-        <title>Authentication</title>
-        <meta name='description' content='React App authentication' />
-      </Helmet>
+      <HelmetProvider>
+        <Helmet>
+          <title>Authentication</title>
+          <meta name='description' content='React App authentication' />
+        </Helmet>
+      </HelmetProvider>
 
       {isTabletOrDesktop ? (
         <div className='auth-page-wrapper'>

@@ -1,15 +1,20 @@
-import { Form, Input, Button, Checkbox, message } from 'antd'
+import { Form, Input, Button, Checkbox } from 'antd'
 import { LoginOutlined } from '@ant-design/icons'
 import SocialNetworks from './SocialNetworks'
 import { Typography } from 'antd'
+import { useContext } from 'react'
+import { AuthContext } from '@/context/AuthContext/AuthContext'
+import { FormSignInConfig } from './configs'
 
 const { Title } = Typography
 
 export default function SignIn() {
   const [form] = Form.useForm()
+  const context = useContext(AuthContext)
 
   const onFinish = async (values: string) => {
     console.log('Success:', values)
+    context.setUser({ name: 'John Doe', email: 'abc' })
   }
 
   return (
@@ -31,38 +36,17 @@ export default function SignIn() {
         <div className='option-text'>or use your account</div>
 
         <Form.Item
-          name='email'
-          hasFeedback
-          label='Email address'
+          {...FormSignInConfig.email}
           labelCol={{ span: 24 }}
           wrapperCol={{ span: 24 }}
-          rules={[
-            {
-              required: true,
-              message: 'Please input your email.',
-            },
-            {
-              type: 'email',
-              message: 'Your email is invalid.',
-            },
-          ]}
         >
           <Input placeholder='Email' size='large' />
         </Form.Item>
 
         <Form.Item
-          name='password'
-          hasFeedback
-          label='Password'
+          {...FormSignInConfig.password}
           labelCol={{ span: 24 }}
           wrapperCol={{ span: 24 }}
-          rules={[
-            {
-              required: true,
-              message: 'Please input your password.',
-            },
-            { min: 6, message: 'Password must be minimum 6 characters.' },
-          ]}
         >
           <Input.Password placeholder='Password' size='large' />
         </Form.Item>
