@@ -1,0 +1,15 @@
+.onePasswork-menu-title-content {
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+.onePasswork-menu-item-group-title {
+    cursor: pointer;
+}
+
+.onePasswork-menu-item-group:hover {
+    background-color: #ccc;
+    .onePasswork-menu-item-group-title {
+        color: #000000;
+    }
+}
