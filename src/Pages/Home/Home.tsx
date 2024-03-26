@@ -2,16 +2,19 @@ import logoWeScan from '@/assets/images/wescan.png'
 import { AuthContext } from '@/context/AuthContext/AuthContext'
 import { Col, Layout, Row, Menu, Avatar } from 'antd'
 import { useContext } from 'react'
-import { menuItems } from './constant'
+import { menuItems } from '../../constants/constant'
 import './home.scss'
 import {
   BellOutlined,
+  CreditCardOutlined,
+  HomeOutlined,
   PlusCircleOutlined,
+  QuestionCircleFilled,
   ShoppingCartOutlined,
   UserOutlined,
 } from '@ant-design/icons'
 
-const { Header } = Layout
+const { Header, Sider, Content } = Layout
 
 export default function Home() {
   const context = useContext(AuthContext)
@@ -66,6 +69,47 @@ export default function Home() {
           </Col>
         </Row>
       </Header>
+      <Layout className='content-layout'>
+        <Sider
+          collapsible={true}
+          collapsedWidth={50}
+          width={200}
+          style={{ background: '#fdb817' }}
+          className='fixed overflow-x-hidden top-[64px] h-[calc(100vh-64px)] home-sider'
+        >
+          <Menu mode='inline' defaultSelectedKeys={['1']}>
+            <Menu.Item key='1' icon={<HomeOutlined style={{ fontSize: 16 }} />}>
+              <span className='navbar-span'>Trang Chủ</span>
+            </Menu.Item>
+            <Menu.Item key='2' icon={<UserOutlined style={{ fontSize: 16 }} />}>
+              <span className='navbar-span'>Thông tin cá nhân</span>
+            </Menu.Item>
+            <Menu.Item
+              key='3'
+              icon={<CreditCardOutlined style={{ fontSize: 16 }} />}
+            >
+              <span className='navbar-span'>Giao dịch</span>
+            </Menu.Item>
+            <Menu.Item
+              key='4'
+              icon={<QuestionCircleFilled style={{ fontSize: 16 }} />}
+            >
+              <span className='navbar-span'>Hướng dẫn sử dụng</span>
+            </Menu.Item>
+          </Menu>
+        </Sider>
+        <Content>
+          <div className='mt-[64px] p-[24px] bg-[#171102] overflow-scroll text-amber-500 h-[calc(100vh-64px)] text-center'>
+            <p>Running Full System Diagnosis</p>
+            {Array.from({ length: 100 }, (_, index) => (
+              <>
+                {index % 20 === 0 && index ? 'more' : `${index}`}
+                <br />
+              </>
+            ))}
+          </div>
+        </Content>
+      </Layout>
     </Layout>
   )
 }

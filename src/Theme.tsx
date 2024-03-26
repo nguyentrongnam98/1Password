@@ -3,7 +3,7 @@ import { App, ConfigProvider, ThemeConfig } from 'antd'
 
 const onePassworkTheme: ThemeConfig = {
   token: {
-    colorPrimary: '#38ef7d',
+    colorPrimary: '#fdb817',
   },
   components: {
     Button: {
