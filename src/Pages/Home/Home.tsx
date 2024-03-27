@@ -176,7 +176,7 @@ export default function Home() {
                           <Avatar src='https://api.dicebear.com/7.x/miniavs/svg?seed=8' />
                         }
                         title='LOL'
-                        description='Game Rác'
+                        description='Game rác'
                       />
                     </Card>
                   </Col>
